@@ -1,7 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import AuthService from "../services/auth.service";
 
 const NavComponent = (props) => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    AuthService.logout();
+    window.alert("Logout Successfully, now you are redirect to the homepage.");
+    navigate("/", { replace: true });
+  };
   return (
     <div>
       <nav>
@@ -28,7 +35,7 @@ const NavComponent = (props) => {
                 </li>
 
                 <li className="nav-item">
-                  <Link className="nav-link" to="#">
+                  <Link onClick={handleLogout} className="nav-link" to="">
                     Logout
                   </Link>
                 </li>
