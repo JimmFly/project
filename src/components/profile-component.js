@@ -13,7 +13,7 @@ const ProfileComponent = (props) => {
           <h1>In profile page.</h1>
           <header className="jumbotron">
             <h3>
-              <strong>{currentUser.user.username}</strong>
+              <strong>name: {currentUser.user.username}</strong>
             </h3>
           </header>
           <p>

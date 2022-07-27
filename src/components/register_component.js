@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import AuthService from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
+
+// 将注册页输入的信息存成state，再将state以JSON的形式传给后端
 const RegisterComponent = () => {
   const navigate = useNavigate();
   let [username, setUsername] = useState("");
