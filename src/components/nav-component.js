@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 const NavComponent = (props) => {
@@ -11,6 +11,7 @@ const NavComponent = (props) => {
     setCurrentUser(null);
     navigate("/", { replace: true });
   };
+  const { pathname } = useLocation();
   return (
     <div>
       {/* 对登录状态的鉴权 */}
@@ -21,42 +22,67 @@ const NavComponent = (props) => {
               <ul className="navbar-nav">
                 {!currentUser && (
                   <li className="nav-item">
-                    <Link className="nav-link active" to="/">
+                    <Link
+                      className={`nav-link ${
+                        pathname === "/" ? "active" : null
+                      }`}
+                      to="/"
+                    >
                       Home
                     </Link>
                   </li>
                 )}
                 {!currentUser && (
                   <li className="nav-item">
-                    <Link className="nav-link" to="/register">
+                    <Link
+                      className={`nav-link ${
+                        pathname === "/register" ? "active" : null
+                      }`}
+                      to="/register"
+                    >
                       Register
                     </Link>
                   </li>
                 )}
                 {!currentUser && (
                   <li className="nav-item">
-                    <Link className="nav-link" to="/login">
+                    <Link
+                      className={`nav-link ${
+                        pathname === "/login" ? "active" : null
+                      }`}
+                      to="/login"
+                    >
                       Login
                     </Link>
                   </li>
                 )}
                 {currentUser && (
                   <li className="nav-item">
-                    <Link onClick={handleLogout} className="nav-link" to="">
+                    <Link onClick={handleLogout} className="nav-link " to="">
                       Logout
                     </Link>
                   </li>
                 )}
                 {currentUser && (
                   <li className="nav-item">
-                    <Link className="nav-link" to="/profile">
+                    <Link
+                      className={`nav-link ${
+                        pathname === "/profile" ? "active" : null
+                      }`}
+                      to="/profile"
+                    >
                       Profile
                     </Link>
                   </li>
                 )}
                 {currentUser && (
                   <li className="nav-item">
-                    <Link className="nav-link" to="/course">
+                    <Link
+                      className={`nav-link ${
+                        pathname === "/course" ? "active" : null
+                      }`}
+                      to="/course"
+                    >
                       Course
                     </Link>
                   </li>
@@ -64,14 +90,24 @@ const NavComponent = (props) => {
                 {/* 判断用户类型 */}
                 {currentUser && currentUser.user.role === "instructor" && (
                   <li className="nav-item">
-                    <Link className="nav-link" to="/postCourse">
+                    <Link
+                      className={`nav-link ${
+                        pathname === "/postCourse" ? "active" : null
+                      }`}
+                      to="/postCourse"
+                    >
                       Post Course
                     </Link>
                   </li>
                 )}
                 {currentUser && currentUser.user.role === "student" && (
                   <li className="nav-item">
-                    <Link className="nav-link" to="/enroll">
+                    <Link
+                      className={`nav-link ${
+                        pathname === "/enroll" ? "active" : null
+                      }`}
+                      to="/enroll"
+                    >
                       Enroll
                     </Link>
                   </li>

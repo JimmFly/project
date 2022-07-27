@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
+import { Link } from "react-router-dom";
 
 // 将登录页输入的信息存成state，再将state以JSON的形式传给后端
 const LoginComponent = (props) => {
@@ -36,6 +37,8 @@ const LoginComponent = (props) => {
 
   return (
     <div style={{ padding: "3rem" }} className="col-md-12">
+      <h3>LOGIN</h3>
+      <br />
       <div>
         {message && (
           <div className="alert alert-danger" role="alert">
@@ -66,6 +69,13 @@ const LoginComponent = (props) => {
           <button onClick={handleLogin} className="btn btn-primary btn-block">
             <span>Login</span>
           </button>
+          <Link
+            to="/register"
+            style={{ marginLeft: "10rem" }}
+            className="btn btn-primary btn-block"
+          >
+            <span>register</span>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AuthService from "../services/auth.service";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 // 将注册页输入的信息存成state，再将state以JSON的形式传给后端
 const RegisterComponent = () => {
@@ -39,6 +39,8 @@ const RegisterComponent = () => {
 
   return (
     <div style={{ padding: "3rem" }} className="col-md-12">
+      <h3>REGISTER</h3>
+      <br />
       <div>
         {message && <div className="alert alert-danger">{message}</div>}
         <div>
@@ -87,6 +89,13 @@ const RegisterComponent = () => {
         <button onClick={handleRegister} className="btn btn-primary">
           <span>Register</span>
         </button>
+        <Link
+          to="/login"
+          style={{ marginLeft: "10rem" }}
+          className="btn btn-primary btn-block"
+        >
+          <span>login</span>
+        </Link>
       </div>
     </div>
   );
